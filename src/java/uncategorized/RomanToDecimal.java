@@ -1,3 +1,5 @@
+package java.uncategorized;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +28,7 @@ public class RomanToDecimal {
         return romanToDecimal;
     }
 
-    int convertRomanToDecimal(String romanNumber, Map<Character, Integer> romanToDecimalMap) {
+    static int convertRomanToDecimal(String romanNumber, Map<Character, Integer> romanToDecimalMap) {
         int decimal = 0;
 
         for (int i = 0; i < romanNumber.length(); i++) {
@@ -49,4 +51,5 @@ public class RomanToDecimal {
 
         return decimal;
     }
-} 
+
+}
