@@ -49,12 +49,3 @@ function convertRomanToInteger(romanNumeral) {
     }
     return number;
 }
-
-console.log(convertRomanToInteger('CXIII'));
-console.log(convertRomanToInteger('MMMCDLV')); // 3455
-console.log(convertRomanToInteger('MMMCDLIV')); // 3454
-console.log(convertRomanToInteger('MMMCDLIII')); // 3453
-console.log(convertRomanToInteger('MMMDCCCLXXVII')); // 3877
-console.log(convertRomanToInteger('I')); // 1
-console.log(convertRomanToInteger('XI')); // 1
-console.log(convertRomanToInteger('CDLVI')); // 456
