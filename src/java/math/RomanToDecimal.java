@@ -17,25 +17,25 @@ import java.util.Map;
 public class RomanToDecimal {
 
     private static Map<Character, Integer> createRomanToDecimalMap() {
-        Map<Character, Integer> romanToDecimal = new HashMap<>();
-        romanToDecimal.put('I', 1);
-        romanToDecimal.put('V', 5);
-        romanToDecimal.put('X', 10);
-        romanToDecimal.put('L', 50);
-        romanToDecimal.put('C', 100);
-        romanToDecimal.put('D', 500);
-        romanToDecimal.put('M', 1000);
-        return romanToDecimal;
+        Map<Character, Integer> romansToDecimals = new HashMap<>();
+        romansToDecimals.put('I', 1);
+        romansToDecimals.put('V', 5);
+        romansToDecimals.put('X', 10);
+        romansToDecimals.put('L', 50);
+        romansToDecimals.put('C', 100);
+        romansToDecimals.put('D', 500);
+        romansToDecimals.put('M', 1000);
+        return romansToDecimals;
     }
 
-    static int convertRomanToDecimal(String romanNumber, Map<Character, Integer> romanToDecimalMap) {
+    static int convertRomanToDecimal(String romanNumber, Map<Character, Integer> romansToDecimals) {
         int decimal = 0;
 
         for (int i = 0; i < romanNumber.length(); i++) {
-            int currentDecimal = romanToDecimalMap.get(romanNumber.charAt(i));
+            int currentDecimal = romansToDecimals.get(romanNumber.charAt(i));
 
             if (i + 1 < romanNumber.length()) {
-                int nextDecimal = romanToDecimalMap.get(romanNumber.charAt(i + 1));
+                int nextDecimal = romansToDecimals.get(romanNumber.charAt(i + 1));
 
                 if (currentDecimal >= nextDecimal) {
                     decimal += currentDecimal;

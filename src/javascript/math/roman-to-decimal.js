@@ -11,24 +11,24 @@
         - in C case, there will be no more pairs for sure, so you can add the current value to the sum, and increase the counter, thus ending the loop
  */
 
-let romanNumerals = new Map();
+let romansToDecimals = new Map();
 
-romanNumerals.set('I', 1);
-romanNumerals.set('V', 5);
-romanNumerals.set('X', 10);
-romanNumerals.set('L', 50);
-romanNumerals.set('C', 100);
-romanNumerals.set('D', 500);
-romanNumerals.set('M', 1000);
+romansToDecimals.set('I', 1);
+romansToDecimals.set('V', 5);
+romansToDecimals.set('X', 10);
+romansToDecimals.set('L', 50);
+romansToDecimals.set('C', 100);
+romansToDecimals.set('D', 500);
+romansToDecimals.set('M', 1000);
 
 function convertRomanToDecimal(romanNumber) {
     let number = 0;
 
     for (let i = 0; i < romanNumber.length; i++) {
-        const currentNumber = romanNumerals.get(romanNumber[i]);
+        const currentNumber = romansToDecimals.get(romanNumber[i]);
 
         if (i + 1 < romanNumber.length) {
-            const nextNumber = romanNumerals.get(romanNumber[i + 1]);
+            const nextNumber = romansToDecimals.get(romanNumber[i + 1]);
 
             if (currentNumber >= nextNumber) {
                 number += currentNumber;
