@@ -1,5 +1,7 @@
 // Given a Romal numeral, the task is to find its corresponding decimal value.
 
+// naive solution (first attempt)
+
 /*
     the idea:
         we know that there are unique roman numerals marking 'turning points', and we also know that some values put before others
@@ -29,7 +31,7 @@ romanNumerals.set('C', {index: 5, value: 100});
 romanNumerals.set('D', {index: 6, value: 500});
 romanNumerals.set('M', {index: 7, value: 1000});
 
-function convertRomanToInteger(romanNumeral) {
+function convertRomanToDecimal(romanNumeral) {
     let number = 0;
     for (let i = romanNumeral.length - 1; i >= 0; i--) {
         const current = romanNumeral[i];
