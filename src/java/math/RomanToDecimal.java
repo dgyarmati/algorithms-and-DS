@@ -1,4 +1,4 @@
-package java.uncategorized;
+package java.math;
 
 import java.util.HashMap;
 import java.util.Map;
