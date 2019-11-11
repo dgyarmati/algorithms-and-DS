@@ -27,6 +27,16 @@ class Tree {
             fn(node);
         }
     }
+
+    traverseDF(fn) {
+        const arr = [this.root];
+
+        while (arr.length) {
+            const node = arr.shift();
+            arr.unshift(...node.children);
+            fn(node);
+        }
+    }
 }
 
 let node = new Node(1);
@@ -48,7 +58,8 @@ node.children[1].children.push(node5);
 let tree = new Tree();
 tree.root = node;
 
-tree.traverseBF((node) => console.log(node.data));
+tree.traverseBF((node) => console.log(node.data)); // 1 2 3 4 5 6 7
+tree.traverseDF((node) => console.log(node.data)); // 1 2 4 5 3 6 7
 
 
 
