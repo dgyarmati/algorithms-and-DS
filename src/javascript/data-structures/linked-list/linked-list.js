@@ -17,15 +17,29 @@ class LinkedList {
     }
 
     size() {
-        let current = this.head;
+        let node = this.head;
         let size = 0;
 
-        while (current) {
+        while (node) {
             size++;
-            current = current.next;
+            node = node.next;
         }
 
         return size;
+    }
+
+    getFirst() {
+        return this.head;
+    }
+
+    getLast() {
+        let node = this.head;
+
+        while (node.next) {
+            node = node.next;
+        }
+
+        return node;
     }
 
 }
@@ -33,5 +47,8 @@ class LinkedList {
 const linkedList = new LinkedList();
 linkedList.insertFirst(5);
 linkedList.insertFirst(15);
+linkedList.insertFirst(20);
 console.log(linkedList);
 console.log(linkedList.size());
+console.log(linkedList.getFirst());
+console.log('last item', linkedList.getLast());
