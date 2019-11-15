@@ -35,11 +35,38 @@ class LinkedList {
     getLast() {
         let node = this.head;
 
-        while (node.next) {
+        while (node && node.next) {
             node = node.next;
         }
 
         return node;
+    }
+
+    clear() {
+        this.head = null;
+    }
+
+    removeFirst() {
+        if (this.head) {
+            this.head = this.head.next;
+        } else {
+            this.clear();
+        }
+    }
+
+    removeLast() {
+        if (!this.head.next) {
+            this.head = null;
+            return;
+        }
+
+        let node = this.head;
+
+        while (node && node.next && node.next.next) {
+            node = node.next;
+        }
+
+        node.next = null;
     }
 
 }
@@ -52,3 +79,19 @@ console.log(linkedList);
 console.log(linkedList.size());
 console.log(linkedList.getFirst());
 console.log('last item', linkedList.getLast());
+//linkedList.clear();
+//console.log(linkedList);
+//linkedList.removeFirst();
+//console.log(linkedList);
+//linkedList.removeLast();
+//console.log(linkedList);
+
+const linkedList2 = new LinkedList();
+linkedList2.insertFirst(8);
+linkedList2.insertFirst(9);
+
+console.log('last item', linkedList2.getLast());
+linkedList2.removeLast();
+console.log(linkedList2);
+
+
