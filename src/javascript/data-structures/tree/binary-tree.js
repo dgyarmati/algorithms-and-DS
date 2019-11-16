@@ -58,13 +58,3 @@ class Node {
     }
 
 }
-
-let node = new Node(1);
-node.insert(0);
-node.insert(3);
-node.insert(-1);
-node.insert(-3);
-node.insert(-2);
-node.right = new Node(-15);
-console.log(node.contains(5));
-console.log(node.validate(node));
