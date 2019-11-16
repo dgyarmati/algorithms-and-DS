@@ -135,7 +135,29 @@ class LinkedList {
         previous.next = node;
     }
 
+    forEach(func) {
+        let node = this.head;
+
+        while (node) {
+            func(node);
+            node = node.next;
+        }
+    }
+
+    * [Symbol.iterator]() {
+        let node = this.head;
+
+        while (node) {
+            yield node;
+            node = node.next;
+        }
+    }
+
 }
+
+const ll = new LinkedList();
+ll.insertLast(18);
+ll.insertLast(20);
 
 
 
