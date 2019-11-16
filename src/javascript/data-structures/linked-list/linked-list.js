@@ -79,6 +79,25 @@ class LinkedList {
         }
     }
 
+    getAt(index) {
+        if (index > this.size() - 1) {
+            return null;
+        }
+
+        let idx = 0;
+        let node = this.head;
+
+        while (node && node.next) {
+            if (index === idx) {
+                return node;
+            }
+            idx++;
+            node = node.next;
+        }
+
+        return node;
+    }
+
 }
 
 const linkedList = new LinkedList();
@@ -100,6 +119,8 @@ const linkedList2 = new LinkedList();
 linkedList2.insertLast(18);
 linkedList2.insertLast(20);
 console.log(linkedList2);
+console.log(linkedList2.getAt(1));
+console.log(linkedList2.getAt(2));
 
 
 
