@@ -1,13 +1,12 @@
 class Node {
 
-    constructor(data, node = null) {
+    constructor(data, next = null) {
         this.data = data;
-        this.next = node;
+        this.next = next;
     }
 }
 
 class LinkedList {
-
     constructor() {
         this.head = null;
     }
@@ -17,15 +16,15 @@ class LinkedList {
     }
 
     size() {
+        let counter = 0;
         let node = this.head;
-        let size = 0;
 
         while (node) {
-            size++;
+            counter++;
             node = node.next;
         }
 
-        return size;
+        return counter;
     }
 
     getFirst() {
@@ -33,13 +32,17 @@ class LinkedList {
     }
 
     getLast() {
-        let node = this.head;
-
-        while (node && node.next) {
-            node = node.next;
+        if (!this.head) {
+            return null;
         }
 
-        return node;
+        let node = this.head;
+        while (node) {
+            if (!node.next) {
+                return node;
+            }
+            node = node.next;
+        }
     }
 
     clear() {
@@ -47,62 +50,59 @@ class LinkedList {
     }
 
     removeFirst() {
-        if (this.head) {
-            this.head = this.head.next;
-        } else {
-            this.clear();
+        if (!this.head) {
+            return;
         }
+
+        this.head = this.head.next;
     }
 
     removeLast() {
+        if (!this.head) {
+            return;
+        }
+
         if (!this.head.next) {
             this.head = null;
             return;
         }
 
-        let node = this.head;
-
-        while (node.next && node.next.next) {
+        let previous = this.head;
+        let node = this.head.next;
+        while (node.next) {
+            previous = node;
             node = node.next;
         }
-
-        node.next = null;
+        previous.next = null;
     }
 
     insertLast(data) {
-        let lastNode = this.getLast();
+        const last = this.getLast();
 
-        if (lastNode) {
-            lastNode.next = new Node(data, null);
+        if (last) {
+            // There are some existing nodes in our chain
+            last.next = new Node(data);
         } else {
-            this.insertFirst(data);
+            // The chain is empty!
+            this.head = new Node(data);
         }
     }
 
     getAt(index) {
-        if (index > this.size() - 1) {
-            return null;
-        }
-
-        let idx = 0;
+        let counter = 0;
         let node = this.head;
-
-        while (node && node.next) {
-            if (index === idx) {
+        while (node) {
+            if (counter === index) {
                 return node;
             }
-            idx++;
+
+            counter++;
             node = node.next;
         }
-
-        return node;
+        return null;
     }
 
     removeAt(index) {
-        if (index > this.size() - 1) {
-            return;
-        }
-
         if (!this.head) {
             return;
         }
@@ -112,41 +112,31 @@ class LinkedList {
             return;
         }
 
-        let idx = 1;
-        let node = this.head;
-
         const previous = this.getAt(index - 1);
-
         if (!previous || !previous.next) {
             return;
         }
-
         previous.next = previous.next.next;
+    }
+
+    insertAt(data, index) {
+        if (!this.head) {
+            this.head = new Node(data);
+            return;
+        }
+
+        if (index === 0) {
+            this.head = new Node(data, this.head);
+            return;
+        }
+
+        const previous = this.getAt(index - 1) || this.getLast();
+        const node = new Node(data, previous.next);
+        previous.next = node;
     }
 
 }
 
-const linkedList = new LinkedList();
-linkedList.insertFirst(5);
-linkedList.insertFirst(15);
-linkedList.insertFirst(20);
-console.log(linkedList);
-console.log(linkedList.size());
-console.log(linkedList.getFirst());
-console.log('last item', linkedList.getLast());
-//linkedList.clear();
-//console.log(linkedList);
-//linkedList.removeFirst();
-//console.log(linkedList);
-//linkedList.removeLast();
-//console.log(linkedList);
-
-const linkedList2 = new LinkedList();
-linkedList2.insertLast(18);
-linkedList2.insertLast(20);
-console.log(linkedList2);
-console.log(linkedList2.getAt(1));
-console.log(linkedList2.getAt(2));
 
 
 
