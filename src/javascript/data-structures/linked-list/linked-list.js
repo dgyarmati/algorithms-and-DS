@@ -69,6 +69,16 @@ class LinkedList {
         node.next = null;
     }
 
+    insertLast(data) {
+        let lastNode = this.getLast();
+
+        if (lastNode) {
+            lastNode.next = new Node(data, null);
+        } else {
+            this.insertFirst(data);
+        }
+    }
+
 }
 
 const linkedList = new LinkedList();
@@ -87,11 +97,9 @@ console.log('last item', linkedList.getLast());
 //console.log(linkedList);
 
 const linkedList2 = new LinkedList();
-linkedList2.insertFirst(8);
-linkedList2.insertFirst(9);
-
-console.log('last item', linkedList2.getLast());
-linkedList2.removeLast();
+linkedList2.insertLast(18);
+linkedList2.insertLast(20);
 console.log(linkedList2);
+
 
 
