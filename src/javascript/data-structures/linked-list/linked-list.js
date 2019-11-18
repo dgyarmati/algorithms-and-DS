@@ -191,11 +191,20 @@ function isCircular(linkedList) {
     }
 }
 
-let ll = new LinkedList();
-ll.insertLast(8);
-ll.insertLast(7);
-ll.insertLast(10);
-ll.getLast().next = ll.head;
-console.log(isCircular(ll));
+function findNthNodeFromTail(linkedList, n) {
+    let slow = linkedList.head;
+    let fast = linkedList.head;
+
+    for (let i = 0; i < n; i++) {
+        fast = fast.next;
+    }
+
+    while (fast.next) {
+        slow = slow.next;
+        fast = fast.next;
+    }
+
+    return slow;
+}
 
 
