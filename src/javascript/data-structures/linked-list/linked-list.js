@@ -173,6 +173,29 @@ function midpoint(linkedList) {
     }
 }
 
+function isCircular(linkedList) {
+    if (linkedList.head) {
+        let slow = linkedList.head;
+        let fast = linkedList.head;
 
+        while (fast.next && fast.next.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow === fast) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+
+let ll = new LinkedList();
+ll.insertLast(8);
+ll.insertLast(7);
+ll.insertLast(10);
+ll.getLast().next = ll.head;
+console.log(isCircular(ll));
 
 
