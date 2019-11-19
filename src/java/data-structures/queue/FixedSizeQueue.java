@@ -44,11 +44,11 @@ class FixedSizeQueue {
         return currentSize;
     }
 
-    public boolean isFull() {
+    private boolean isFull() {
         return currentSize == capacity;
     }
 
-    public boolean isEmpty() {
+    private boolean isEmpty() {
         return currentSize == 0;
     }
 }
