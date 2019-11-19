@@ -14,13 +14,27 @@ class FixedSizeQueue {
         this.currentSize = 0;
     }
 
-    // adss an item to the end of the queue - that is, 0, 1, ...
+    // adds an item to the end of the queue - that is, 0, 1, ...
     public void enqueue(int item) {
         if (!isFull()) {
+            // if we previously removed an item, the array's size is now capacity - 1, which would cause the new element to replace the element at 0, so we need to
+            // enlarge the array
+            if (arr.length < capacity) {
+                int[] enlargedArray = enlargeArray(arr, currentSize + 1);
+                arr = enlargedArray;
+            }
             rear = (rear + 1) % capacity;
             arr[rear] = item;
             currentSize++;
         }
+    }
+
+    private int[] enlargeArray(int[] array, int newSize) {
+        int[] enlargedArray = new int[newSize];
+        for (int i = 1; i < enlargedArray.length; i++) {
+            enlargedArray[i] = array[i - 1];
+        }
+        return enlargedArray;
     }
 
     // remove item from queue from front, that is, starting from 0
@@ -29,6 +43,7 @@ class FixedSizeQueue {
             int frontElement = arr[front];
             currentSize--;
 
+            // remove first item and shrink array
             int[] reducedArray = new int[currentSize];
             System.arraycopy(arr, front + 1, reducedArray, 0, currentSize);
             arr = reducedArray;
@@ -78,11 +93,13 @@ class FixedSizeQueue {
 
         int n = q.dequeue(); // 2
         int n1 = q.dequeue(); // 3
-
         System.out.println("last two elements dequeued: " + n + ", " + n1);
 
-        System.out.print("array: ");
         q.print(); // [5]
+        q.enqueue(8);
+
+        System.out.print("array: ");
+        q.print(); // [8, 5]
 
     }
 }
