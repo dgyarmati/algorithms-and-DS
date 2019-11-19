@@ -18,8 +18,8 @@ class FixedSizeQueue {
 
     void enqueue(int item) {
         if (!isFull()) {
-            this.rear = (this.rear + 1) % this.capacity;
-            this.array[this.rear] = item;
+            rear = (rear + 1) % capacity;
+            array[rear] = item;
             currentSize++;
         }
     }
@@ -28,7 +28,7 @@ class FixedSizeQueue {
         if (!isEmpty()) {
             int item = array[front];
             array[front] = 0;
-            front = (front + 1) % this.capacity;
+            front = (front + 1) % capacity;
             currentSize--;
             return item;
         }
