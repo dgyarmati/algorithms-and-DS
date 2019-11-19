@@ -13,7 +13,7 @@ class Stack {
     }
 
     peek() {
-        return this.array.get(this.array.length - 1);
+        return this.array[this.array.length - 1];
     }
 
 }

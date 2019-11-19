@@ -5,15 +5,15 @@ class Queue {
     }
 
     enqueue(item) {
-        this.array.push(item);
+        this.array.unshift(item);
     }
 
     dequeue() {
-        return this.array.shift();
+        return this.array.pop();
     }
 
     peek() {
-        return this.array.get(0);
+        return this.array[this.array.length - 1];
     }
 }
 
