@@ -1,36 +1,36 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class ResizableStack {
-    private List<Integer> array;
+class ResizableStack<T> {
+    private List<T> array;
 
     ResizableStack() {
         this.array = new ArrayList<>();
     }
 
-    public void push(int item) {
+    public void push(T item) {
         array.add(item);
     }
 
-    public int pop() {
-        int item = array.get(array.size() - 1);
+    public T pop() {
+        T item = array.get(array.size() - 1);
         array.remove(array.size() - 1);
         return item;
     }
 
-    public int peek() {
+    public T peek() {
         return array.get(array.size() - 1);
     }
 
     public void print() {
-        for (Integer integer : array) {
-            System.out.print(integer + " ");
+        for (T item : array) {
+            System.out.print(item + " ");
         }
         System.out.println();
     }
 
     public static void main(String[] args) {
-        ResizableStack rs = new ResizableStack();
+        ResizableStack<Integer> rs = new ResizableStack<>();
 
         rs.push(1);
         rs.push(2);

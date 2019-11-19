@@ -1,36 +1,36 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class ResizableQueue {
-    private List<Integer> array;
+class ResizableQueue<T> {
+    private List<T> array;
 
     public ResizableQueue() {
         this.array = new ArrayList<>();
     }
 
-    public void enqueue(int item) {
+    public void enqueue(T item) {
         array.add(item);
     }
 
-    public int dequeue() {
-        int item = array.get(0);
+    public T dequeue() {
+        T item = array.get(0);
         array.remove(0);
         return item;
     }
 
-    public int peek() {
+    public T peek() {
         return array.get(0);
     }
 
     public void print() {
-        for (Integer integer : array) {
-            System.out.print(integer + " ");
+        for (T item : array) {
+            System.out.print(item + " ");
         }
         System.out.println();
     }
 
     public static void main(String[] args) {
-        ResizableQueue rq = new ResizableQueue();
+        ResizableQueue<Integer> rq = new ResizableQueue<>();
 
         rq.enqueue(0);
         rq.enqueue(2);
