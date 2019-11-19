@@ -3,7 +3,7 @@ import java.util.NoSuchElementException;
 // you retrieve the elements in the order they were added
 // remove from the front, insert to the end
 // standard implementation; dequeue doesn't actually remove element, only if it's followed by enqueue
-class FixedSizeQueue<T> {
+class FixedSizeQueue {
     private int front, rear, currentSize;
     private int capacity;
     private int[] array;
