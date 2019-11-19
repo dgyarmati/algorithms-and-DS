@@ -1,12 +1,12 @@
 import java.util.NoSuchElementException;
 
 // you retrieve the elements the opposite order they were added
-class Stack {
+class FixedSizeStack {
     private int[] arr;
     private int top;
     private int capacity;
 
-    Stack(int capacity) {
+    FixedSizeStack(int capacity) {
         this.arr = new int[capacity];
         this.capacity = capacity;
         this.top = -1;
@@ -54,7 +54,7 @@ class Stack {
     }
 
     public static void main(String[] args) {
-        Stack s = new Stack(3);
+        FixedSizeStack s = new FixedSizeStack(3);
         s.push(1);
         s.push(2);
         s.push(3);
