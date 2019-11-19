@@ -4,9 +4,9 @@ import java.util.NoSuchElementException;
 // remove from the front, insert to the end
 // standard implementation; dequeue doesn't actually remove element, only if it's followed by enqueue
 class FixedSizeQueue {
-    int front, rear, currentSize;
-    int capacity;
-    int[] array;
+    private int front, rear, currentSize;
+    private int capacity;
+    private int[] array;
 
     FixedSizeQueue(int capacity) {
         this.array = new int[capacity];

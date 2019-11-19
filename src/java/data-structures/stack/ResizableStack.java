@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class ResizableStack {
-    List<Integer> array;
+    private List<Integer> array;
 
     ResizableStack() {
         this.array = new ArrayList<>();
@@ -13,9 +13,9 @@ class ResizableStack {
     }
 
     public int pop() {
-        int lastItem = array.get(array.size() - 1);
+        int item = array.get(array.size() - 1);
         array.remove(array.size() - 1);
-        return lastItem;
+        return item;
     }
 
     public int peek() {
