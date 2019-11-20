@@ -30,7 +30,7 @@ class ArrayList<T> {
 
     public T remove(int index) {
         if (index >= 0 && index < currentSize) {
-            T toRemove = (T) data[index];
+            T toRemove = data[index];
             if (index != currentSize - 1) {
                 for (int i = index + 1; i < currentSize; i++) {
                     T item = data[i];
