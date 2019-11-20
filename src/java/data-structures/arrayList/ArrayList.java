@@ -49,11 +49,17 @@ class ArrayList<T> {
         return currentSize;
     }
 
-    public void print() {
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
         for (int i = 0; i < currentSize; i++) {
-            System.out.print(data[i] + " ");
-
+            sb.append(data[i]);
+            if (i < currentSize - 1) {
+                sb.append(", ");
+            }
         }
-        System.out.println();
+        sb.append("]");
+        return sb.toString();
     }
 }
