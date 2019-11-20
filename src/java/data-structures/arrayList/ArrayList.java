@@ -1,47 +1,44 @@
-import java.util.List;
-
-// WIP
-class ArrayList {
+class ArrayList<T> {
     private int capacity;
-    private int[] data;
+    private T[] data;
     private int currentSize;
 
     public ArrayList() {
         this.capacity = 5;
-        this.data = new int[this.capacity];
+        this.data = (T[]) new Object[this.capacity];
         this.currentSize = 0;
     }
 
-    public void add(int item) {
+    public void add(T item) {
         if (capacity <= currentSize) {
             int size = capacity;
             capacity += capacity;
-            int[] enlargedArray = new int[capacity];
+            Object[] enlargedArray = new Object[capacity];
             System.arraycopy(data, 0, enlargedArray, 0, size);
-            data = enlargedArray;
+            data = (T[]) enlargedArray;
         }
         data[currentSize] = item;
         currentSize++;
     }
 
-    public int get(int index) {
+    public T get(int index) {
         if (index >= 0 && index < currentSize) {
             return data[index];
         }
         throw new ArrayIndexOutOfBoundsException();
     }
 
-    public int remove(int index) {
+    public T remove(int index) {
         if (index >= 0 && index < currentSize) {
-            int toRemove = data[index];
+            T toRemove = (T) data[index];
             if (index != currentSize - 1) {
                 for (int i = index + 1; i < currentSize; i++) {
-                    int item = data[i];
+                    T item = data[i];
                     data[i - 1] = item;
-                    data[i] = 0;
+                    data[i] = null;
                 }
             }
-            data[currentSize - 1] = 0;
+            data[currentSize - 1] = null;
             currentSize--;
             return toRemove;
         }
