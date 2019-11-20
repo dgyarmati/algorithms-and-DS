@@ -34,8 +34,9 @@ class ArrayList {
     }
 
     public void print() {
-        for (int item : data) {
-            System.out.print(item + " ");
+        for (int i = 0; i < currentSize; i++) {
+            System.out.print(data[i] + " ");
+
         }
         System.out.println();
     }
