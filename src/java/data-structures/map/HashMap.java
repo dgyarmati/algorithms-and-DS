@@ -59,13 +59,13 @@ class HashMap<K, V> {
         2. get the bucket at given index, and search it for the key
      */
     public V get(K key) {
-        Entry<K, V> bucket = buckets[getHash(key) % getBucketSize()];
+        Entry<K, V> bucketIdx = buckets[getHash(key) % getBucketSize()];
 
-        while (bucket != null) {
-            if (key == bucket.key) {
-                return bucket.value;
+        while (bucketIdx != null) {
+            if (key == bucketIdx.key) {
+                return bucketIdx.value;
             }
-            bucket = bucket.next;
+            bucketIdx = bucketIdx.next;
         }
         return null;
     }
