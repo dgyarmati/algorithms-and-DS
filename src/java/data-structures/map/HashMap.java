@@ -17,8 +17,8 @@ class HashMap<K, V> {
         this(INITIAL_CAPACITY);
     }
 
-    public HashMap(int size) {
-        this.size = size;
+    public HashMap(int capacity) {
+        this.buckets = new Entry[capacity];
     }
 
     /*
