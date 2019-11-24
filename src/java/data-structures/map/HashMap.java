@@ -1,3 +1,12 @@
+/*
+    A HashMap has an array of linked lists, AKA buckets. Inserting and getting elements are based on their hash code (an int).
+    We use buckets since there can be an infinite number of elements but int is finite, two different object can have the same
+    hash code (collision).
+
+    The solution to that problem is that if there is a collision (teo objects reside at the same index), we go through the linked
+    list residing at that index, and insert/retrieve the element accordingly.
+ */
+
 class HashMap<K, V> {
     private Entry<K, V>[] buckets;
     private static final int INITIAL_CAPACITY = 16;
@@ -12,21 +21,26 @@ class HashMap<K, V> {
         this.size = size;
     }
 
+    /*
+        1. calculate the key's hash code
+        2. calculate the index of the key using the hash code and the array length (hashCode (key) % array_length)
+        3. if the bucket already exists at given index, go through the bucket and insert accordingly, otherwise create new bucket at index
+     */
     public void put(K key, V value) {
         Entry<K, V> entry = new Entry<>(key, value, null);
 
-        int bucket = getHash(key) % getBucketSize();
+        int bucketIdx = getHash(key) % getBucketSize();
 
-        Entry<K, V> existing = buckets[bucket];
+        Entry<K, V> existing = buckets[bucketIdx];
 
         if (existing == null) {
-            buckets[bucket] = entry;
+            buckets[bucketIdx] = entry;
             size++;
         } else {
             while (existing.next != null) {
                 if (existing.key.equals(key)) {
                     existing.value = value;
-                    break;
+                    return;
                 }
                 existing = existing.next;
             }
@@ -40,6 +54,10 @@ class HashMap<K, V> {
         }
     }
 
+    /*
+        1. calculate the hash code from the key, then calculate the index from the hash code
+        2. get the bucket at given index, and search it for the key
+     */
     public V get(K key) {
         Entry<K, V> bucket = buckets[getHash(key) % getBucketSize()];
 
