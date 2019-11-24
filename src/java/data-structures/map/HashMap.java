@@ -12,6 +12,58 @@ class HashMap<K, V> {
         this.size = size;
     }
 
+    public void put(K key, V value) {
+        Entry<K, V> entry = new Entry<>(key, value, null);
+
+        int bucket = getHash(key) % getBucketSize();
+
+        Entry<K, V> existing = buckets[bucket];
+
+        if (existing == null) {
+            buckets[bucket] = entry;
+            size++;
+        } else {
+            while (existing.next != null) {
+                if (existing.key.equals(key)) {
+                    existing.value = value;
+                    break;
+                }
+                existing = existing.next;
+            }
+
+            if (existing.key.equals(key)) {
+                existing.value = value;
+            } else {
+                existing.next = entry;
+                size++;
+            }
+        }
+    }
+
+    public V get(K key) {
+        Entry<K, V> bucket = buckets[getHash(key) % getBucketSize()];
+
+        while (bucket != null) {
+            if (key == bucket.key) {
+                return bucket.value;
+            }
+            bucket = bucket.next;
+        }
+        return null;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    private int getBucketSize() {
+        return buckets.length;
+    }
+
+    private int getHash(K key) {
+        return key == null ? 0 : Math.abs(key.hashCode());
+    }
+
     static class Entry<K, V> {
         final K key;
         V value;
